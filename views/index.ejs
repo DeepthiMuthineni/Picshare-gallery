@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/index-styles.css">
+  <title>PicShare Gallery</title>
+</head>
+<body>
+  <header>
+    <h1>PicShare Gallery</h1>
+  </header>
+ 
+  
+  <section class="gallery">
+    <% if (photos.length > 0) { %>
+      <% photos.forEach(photo => { %>
+        <div class="photo-card">
+          <img src="/images/<%= photo.filename %>" alt="<%= photo.title %>" class="photo">
+          <div class="photo-info">
+            <h2 class="photo-title"><%= photo.title %></h2>
+            <p class="photo-description"><%= photo.description %></p>
+          </div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>No photos have been uploaded yet.</p>
+    <% } %>
+  </section>
+  <a href="/upload" class="upload-link">Upload Photo</a>
+
+</body>
+</html>
