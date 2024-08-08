@@ -11,8 +11,8 @@ module.exports = (Photo, upload, body, validationResult) => {
  
   router.post('/',
     upload.single('image'),
-    body('title').notEmpty().withMessage('Title is required'),
-    body('description').notEmpty().withMessage('Description is required'),
+    body('title').isLength({ min: 3 }).withMessage('Title must be above 3 letters'),
+    body('description').isLength({ min: 5 }).withMessage('Description is required'),
     async (req, res) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
